@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Users, Clock, Tag, Search } from 'lucide-react';
@@ -187,6 +186,3 @@ export default function Events() {
     </div>
   );
 }
-=======
-{"code":"rate-limited","message":"You have hit the rate limit. Please upgrade to keep chatting.","providerLimitHit":false,"isRetryable":true}
->>>>>>> be9bbcc8b0c2de6c8f3ba8e43147667bfc178a8a

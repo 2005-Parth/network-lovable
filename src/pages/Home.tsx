@@ -4,13 +4,7 @@ import { Users, Target, Zap, Calendar, BookOpen, Award, Quote } from 'lucide-rea
 import HeroCarousel from '@/components/HeroCarousel';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-<<<<<<< HEAD
 import { supabase } from '@/lib/supabase'; // Make sure this path is correct
-=======
-import { useTestimonials } from '@/hooks/useSupabaseData';
-import { supabase } from '@/lib/supabase';
-import { useState } from 'react';
->>>>>>> be9bbcc8b0c2de6c8f3ba8e43147667bfc178a8a
 
 // 1. Create a map to link DB string to actual Icon component
 const iconMap = {
@@ -19,7 +13,6 @@ const iconMap = {
   Zap: Zap,
 };
 
-<<<<<<< HEAD
 // Define types for our data for better TypeScript support
 interface Feature {
   id: string;
@@ -75,40 +68,6 @@ export default function Home() {
 
     fetchHomepageData();
   }, []);
-=======
-const stats = [
-  { number: '500+', label: 'Active Members' },
-  { number: '50+', label: 'Events Hosted' },
-  { number: '25+', label: 'Projects Launched' },
-  { number: '100%', label: 'Success Rate' }
-];
-
-export default function Home() {
-  const { testimonials, loading: testimonialsLoading } = useTestimonials();
-  const [email, setEmail] = useState('');
-  const [subscribing, setSubscribing] = useState(false);
-
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setSubscribing(true);
-    try {
-      const { error } = await supabase
-        .from('newsletter_subscribers')
-        .insert([{ email }]);
-
-      if (error) throw error;
-      
-      alert('Successfully subscribed to newsletter!');
-      setEmail('');
-    } catch (error: any) {
-      alert('Error subscribing: ' + error.message);
-    } finally {
-      setSubscribing(false);
-    }
-  };
->>>>>>> be9bbcc8b0c2de6c8f3ba8e43147667bfc178a8a
 
   return (
     <div className="min-h-screen">
@@ -171,12 +130,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-6">What Our Members Say</h2>
             <p className="text-xl text-muted-foreground">Hear from our community members about their transformative experiences</p>
           </motion.div>
-<<<<<<< HEAD
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-=======
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
->>>>>>> be9bbcc8b0c2de6c8f3ba8e43147667bfc178a8a
             {testimonials.map((testimonial, index) => (
               <motion.div key={testimonial.id} /* ... card animation ... */>
                 <Card className="group hover:shadow-glass transition-all duration-300 bg-gradient-card border-border/50 hover:border-primary/30 h-full">
@@ -184,17 +138,9 @@ export default function Home() {
                     <Quote className="w-8 h-8 text-primary mb-6" />
                     <blockquote className="text-lg text-muted-foreground mb-6 flex-grow">"{testimonial.quote}"</blockquote>
                     <div className="flex items-center mt-auto">
-<<<<<<< HEAD
-=======
-                      <img
-                        src={testimonial.image_url || '/placeholder.svg'}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full bg-gradient-primary mr-4 object-cover"
-                      />
->>>>>>> be9bbcc8b0c2de6c8f3ba8e43147667bfc178a8a
                       <div>
                         <div className="font-semibold text-foreground">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.role}{testimonial.company && ` at ${testimonial.company}`}</div>
+                        <div className="text-sm text-muted-foreground">{testimonial.role}</div>
                       </div>
                     </div>
                   </CardContent>
@@ -202,17 +148,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-
-          {testimonialsLoading && (
-            <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="text-muted-foreground">Loading testimonials...</p>
-            </div>
-          )}
-
-          {!testimonialsLoading && testimonials.length === 0 && (
-            <p className="text-center text-muted-foreground">No testimonials available.</p>
-          )}
         </div>
       </section>
 
@@ -234,19 +169,16 @@ export default function Home() {
               Get the latest updates on events, workshops, and community news delivered to your inbox.
             </p>
 
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
                 className="flex-1 px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
               />
-              <Button type="submit" disabled={subscribing} className="bg-gradient-primary hover:shadow-glow-primary">
-                {subscribing ? 'Subscribing...' : 'Subscribe'}
+              <Button className="bg-gradient-primary hover:shadow-glow-primary">
+                Subscribe
               </Button>
-            </form>
+            </div>
           </motion.div>
         </div>
       </section>
