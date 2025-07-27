@@ -47,9 +47,9 @@ export default function Blog() {
       } else {
         const postsWithUrls = data.map(post => ({
           ...post,
-          image: supabase.storage.from('blog_images').getPublicUrl(post.image_name).data.publicUrl,
+          image: supabase.storage.from('carousel-images').getPublicUrl(post.image_name).data.publicUrl,
           // Assuming author images are in a 'committee_photos' or similar bucket
-          authorImage: supabase.storage.from('committee_photos').getPublicUrl(post.author_image_name).data.publicUrl,
+          authorImage: supabase.storage.from('carousel-images').getPublicUrl(post.author_image_name).data.publicUrl,
         }));
         
         setAllPosts(postsWithUrls);

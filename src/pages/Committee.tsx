@@ -87,7 +87,7 @@ export default function Committee() {
         const processedMembers = data.map(member => ({
           ...member,
           image: member.image_name 
-            ? supabase.storage.from('committee_photos').getPublicUrl(member.image_name).data.publicUrl
+            ? supabase.storage.from('carousel-images').getPublicUrl(member.image_name).data.publicUrl
             : `https://ui-avatars.com/api/?name=${member.name.replace(' ', '+')}&background=0d0d0d&color=fff` // Fallback avatar
         }));
 

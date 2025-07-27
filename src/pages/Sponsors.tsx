@@ -76,7 +76,7 @@ export default function Sponsors() {
           }
           acc[tier].push({
             ...sponsor,
-            logo: supabase.storage.from('sponsor_logos').getPublicUrl(sponsor.logo_name).data.publicUrl,
+            logo: supabase.storage.from('carousel-images').getPublicUrl(sponsor.logo_name).data.publicUrl,
           });
           return acc;
         }, {} as Record<string, Sponsor[]>);
